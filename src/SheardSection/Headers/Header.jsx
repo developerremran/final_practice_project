@@ -12,7 +12,7 @@ const Header = () => {
     };
 
     return (
-        <div className="navbar w-[1280px] fixed z-10  bg-black bg-opacity-30 text-white py-4 px-2">
+        <div className="navbar max-w-[1280px] fixed z-10  bg-black bg-opacity-30 text-white py-4 px-2">
             <div className="flex-1 items-center">
                 <div>
                 <a className="btn btn-ghost normal-case text-xl">
@@ -29,12 +29,14 @@ const Header = () => {
                     </svg>
                 </button>
                 {isMenuOpen && (
-                    <ul className="menu menu-horizontal px-1 font-semibold text-md">
-                        <li><Link to='/'>HOME</Link></li>
+                    <ul className="menu menu-horizontal px-1 font-semibold text-md ">
+                       <div className='sm:hidden md:flex md:block'>
+                       <li><Link to='/'>HOME</Link></li>
                         <li><Link to='/contact_us'>CONTACT US</Link></li>
                         <li><Link to='/Dashboard'>DASHBOARD</Link></li>
                         <li><Link to='/our_menu'>OUR MENU</Link></li>
                         <li><Link to='/our_shop'>OUR SHOP</Link></li>
+                       </div>
 
                         <span className='text-3xl mt-2 relative'>
                             <FaCartPlus className='absolute mr-5'></FaCartPlus>
