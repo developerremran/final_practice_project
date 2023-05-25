@@ -5,7 +5,7 @@ const menuHook =()=>{
     const [loading, setLoading] = useState(true)
 
     useEffect(() =>{
-      fetch('/public/MenuData/menuData.json')
+      fetch('http://localhost:5000/products')
       .then(res => res.json())
       .then( data => {
        

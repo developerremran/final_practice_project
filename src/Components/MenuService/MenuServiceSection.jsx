@@ -4,19 +4,6 @@ import SIngleMenuCard from './SIngleMenuCard';
 import menuHook from '../../CustomHooks/CustomHook';
 
 const MenuServiceSection = () => {
-  // const [data, setData] = useState([])
-
-  // useEffect(() =>{
-  //   fetch('/public/MenuData/menuData.json')
-  //   .then(res => res.json())
-  //   .then( data => {
-        
-  //       const popularItems = data.filter(item=> item.category === "popular")
-  //       setData(popularItems)
-  //       // console.log(popularItems);
-  //   })
-  //   .catch( error => console.log(error))
-  // },[])
   const [data, loading] = menuHook()
   const popularItems = data.filter(item=> item.category === "popular")
 

@@ -21,7 +21,7 @@ import { Pagination, Navigation, Autoplay } from "swiper";
 const Testimonials = () => {
     const [testimonials, setTestimonials] = useState([]);
     useEffect(() => {
-        fetch('/public/Review/review.json')
+        fetch('http://localhost:5000/review')
             .then(res => res.json())
             .then(data => {
                 console.log(data);

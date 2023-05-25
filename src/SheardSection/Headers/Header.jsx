@@ -35,7 +35,7 @@ const Header = () => {
                         <li><Link to='/contact_us'>CONTACT US</Link></li>
                         <li><Link to='/Dashboard'>DASHBOARD</Link></li>
                         <li><Link to='/our_menu'>OUR MENU</Link></li>
-                        <li><Link to='/our_shop'>OUR SHOP</Link></li>
+                        <li><Link to='/our_shop/salad'>OUR SHOP</Link></li>
                        </div>
 
                         <span className='text-3xl mt-2 relative'>
