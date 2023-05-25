@@ -1,21 +1,24 @@
 import React, { useEffect, useState } from 'react';
 import SectionTitle from '../../SheardSection/SectionTitle/SectionTitle';
 import SIngleMenuCard from './SIngleMenuCard';
+import menuHook from '../../CustomHooks/CustomHook';
 
 const MenuServiceSection = () => {
-  const [data, setData] = useState([])
+  // const [data, setData] = useState([])
 
-  useEffect(() =>{
-    fetch('/public/MenuData/menuData.json')
-    .then(res => res.json())
-    .then( data => {
+  // useEffect(() =>{
+  //   fetch('/public/MenuData/menuData.json')
+  //   .then(res => res.json())
+  //   .then( data => {
         
-        const popularItems = data.filter(item=> item.category === "popular")
-        setData(popularItems)
-        // console.log(popularItems);
-    })
-    .catch( error => console.log(error))
-  },[])
+  //       const popularItems = data.filter(item=> item.category === "popular")
+  //       setData(popularItems)
+  //       // console.log(popularItems);
+  //   })
+  //   .catch( error => console.log(error))
+  // },[])
+  const [data, loading] = menuHook()
+  const popularItems = data.filter(item=> item.category === "popular")
 
     return (
         <div>
@@ -25,7 +28,7 @@ const MenuServiceSection = () => {
 
             <section className='grid md:grid-cols-2 gap-10 mt-10'>
                   {
-                    data.map(singleData => <SIngleMenuCard key={singleData._id} singleData={singleData}></SIngleMenuCard>)
+                    popularItems.map(singleData => <SIngleMenuCard key={singleData._id} singleData={singleData}></SIngleMenuCard>)
                   }
             </section>
             <div className='flex justify-center mt-10'>
