@@ -6,6 +6,9 @@ import ContactUs from "../Pages/ContactUs";
 import DashBoard from "../Pages/DashBoard";
 import OurMenu from "../Pages/OurMenu";
 import OurShop from "../Pages/OurShop";
+import Login from "../Pages/Login";
+import Register from "../Pages/Register";
+import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
 
 const router = createBrowserRouter([
@@ -23,15 +26,23 @@ const router = createBrowserRouter([
         },
         {
             path:'Dashboard',
-            element:<DashBoard></DashBoard>
+            element:<PrivateRoute><DashBoard></DashBoard></PrivateRoute>
         },
         {
-         path:'/our_menu',
-         element:<OurMenu></OurMenu>
+            path:'/our_menu',
+            element:<OurMenu></OurMenu>
         },
         {
             path:'our_shop/:category',
             element:<OurShop></OurShop>
+        },
+        {
+            path:'login',
+            element:<Login></Login>
+        },
+        {
+            path:'register',
+            element:<Register></Register>
         }
      ]
     }
