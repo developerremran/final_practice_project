@@ -1,8 +1,6 @@
 import React from 'react';
 
 const ChefProductCard = ({ product }) => {
-
-    console.log(product);
     const { name, image, recipe } = product
     return (
         <div>

@@ -1,23 +1,25 @@
 import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { FaCartPlus, FaUserAlt } from 'react-icons/fa';
+import { FaCartPlus, FaShoppingCart, FaUserAlt } from 'react-icons/fa';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
+import useCart from '../../CustomHooks/useCart';
+
 
 
 
 const Header = () => {
 
     const [isMenuOpen, setMenuOpen] = useState(true);
-
     const toggleMenu = () => {
         setMenuOpen(!isMenuOpen);
     };
 
-    const { user, loggOut,updateProfiled } = useContext(AuthContext)
-
+    const { user, loggOut, updateProfiled } = useContext(AuthContext)
     const loggedOut = () => {
         loggOut()
     }
+  const [carts] = useCart()
+// console.log(carts);
 
     return (
         <div className="navbar max-w-[1280px] fixed z-10  bg-black bg-opacity-30 text-white py-4 px-2">
@@ -27,7 +29,7 @@ const Header = () => {
                         <span className='font-bold'>
                             BISTRO BOSS
                             <br />Restaurant</span>
-                            {user?.displayName}
+
                     </a>
                 </div>
             </div>
@@ -45,17 +47,25 @@ const Header = () => {
                             <li><Link to='/Dashboard'>DASHBOARD</Link></li>
                             <li><Link to='/our_menu'>OUR MENU</Link></li>
                             <li><Link to='/our_shop/salad'>OUR SHOP</Link></li>
+
                         </div>
 
-                        <span className='text-3xl mt-2 relative'>
-                            <FaCartPlus className='absolute mr-5'></FaCartPlus>
-                            <sub className=' absolute z-10 top-0 text-sm text-center w-[20px] h-[20px] mt-5 ml-4 bg-red-700  rounded-full'>1</sub>
+                        <span className='text-3xl    '>
+                        
+                                
+                                    <Link to='userdashboard/myCart'>
+                                        <div className="badge badge-secondary">
+                                        <FaShoppingCart></FaShoppingCart> { carts?.length}</div>
+                                    </Link>
+                                    
+                                
+                       
                         </span>
 
                         {
                             user ?
                                 <>
-                                    <li className='ml-10' onClick={loggedOut}><Link>SIGN OUT</Link></li>
+                                    <li className=' ' onClick={loggedOut}><Link>SIGN OUT</Link></li>
                                 </>
                                 :
                                 <>

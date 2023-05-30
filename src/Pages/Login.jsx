@@ -8,8 +8,9 @@ import { useContext } from 'react';
 import { AuthContext } from '../AuthProvider/AuthProvider';
 
 
+
 const Login = () => {
-    const {loggedUser} = useContext(AuthContext)
+    const {loggedUser,googleNewUser} = useContext(AuthContext)
     const [disabled, setDisabled] = useState(true)
     const location = useLocation()
     const navigate = useNavigate()
@@ -56,6 +57,8 @@ const Login = () => {
         }
     }
 
+  
+
     return (
         <div className='mt-28'>
             <div className="shadow-2xl border hero min-h-[600px] bg-base-200 fixed w-[1280px] -mb-10">
@@ -96,10 +99,13 @@ const Login = () => {
 
                             
                             <div className="form-control mt-6">
-                                <button disabled={disabled} className="btn btn-primary">Login</button>
+                                <button disabled={false} className="btn btn-primary">Login</button>
+                            
+                             
                             </div>
                             <p className='mt-5 mb-5'>I am new user ! <Link to='/register'> <button className='btn btn-outline btn-sm'>Register</button></Link> </p>
                             </form>
+                            
                         </div>
                     </div>
                     <div className=" lg:text-left">
@@ -108,8 +114,11 @@ const Login = () => {
 
                 </div>
 
-
+              
             </div>
+
+            
+           
         </div>
     );
 };
