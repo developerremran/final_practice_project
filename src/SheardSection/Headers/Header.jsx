@@ -15,6 +15,7 @@ const Header = () => {
     };
 
     const { user, loggOut, updateProfiled } = useContext(AuthContext)
+    // console.log(user);
     const loggedOut = () => {
         loggOut()
     }

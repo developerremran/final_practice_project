@@ -6,6 +6,7 @@ import loginBgImg from '../assets/others/authentication2.png'
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
 import { AuthContext } from '../AuthProvider/AuthProvider';
+import GoogleSignIn from '../SheardSection/GoogleSignIn/GoogleSignIn';
 
 
 
@@ -38,8 +39,6 @@ const Login = () => {
             alert(error)
             console.log(error)
         })
-        
-   
 
     }
 
@@ -69,16 +68,11 @@ const Login = () => {
                         <div className="card-body">
 
                             <form onSubmit={loginHendler} className="form-control">
-
-
-
                                 <label className="label">
                                     <span className="label-text">Email</span>
                                 </label>
 
                                 <input type="email" name='email' placeholder="email" className="input input-bordered" />
-
-
                                 <label className="label">
                                     <span className="label-text">Password</span>
                                 </label>
@@ -106,19 +100,15 @@ const Login = () => {
                             <p className='mt-5 mb-5'>I am new user ! <Link to='/register'> <button className='btn btn-outline btn-sm'>Register</button></Link> </p>
                             </form>
                             
+                            <GoogleSignIn></GoogleSignIn>
+                            
                         </div>
                     </div>
                     <div className=" lg:text-left">
                         <img src={loginBgImg} alt="" />
                     </div>
-
-                </div>
-
-              
+                </div>            
             </div>
-
-            
-           
         </div>
     );
 };

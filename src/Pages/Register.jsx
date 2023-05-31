@@ -7,6 +7,7 @@ import { useForm } from 'react-hook-form';
 import { useContext } from 'react';
 import { AuthContext } from '../AuthProvider/AuthProvider';
 import Swal from 'sweetalert2';
+import GoogleSignIn from '../SheardSection/GoogleSignIn/GoogleSignIn';
 
 const Register = () => {
 
@@ -19,33 +20,26 @@ const Register = () => {
         console.log(data)
 
         createUser(data.email, data.password)
-            .then((result) => {
+            .then(result => {
                 const user = result.user;
+                console.log(user);
                 const info = { name: data.name, email: data.email }
-                // console.log(info);
-                fetch('http://localhost:5000/users', {
-                    method: 'POST',
-                    headers: { 'content-type': 'application/json' },
-                    body: JSON.stringify(info)
+                console.log(info);
+                fetch('http://localhost:5000/users',{
+                    method:'POST',
+                    headers:{'content-type': 'application/json'},
+                    body:JSON.stringify(info)
                 })
-                    .then(res => res.json())
-                    .then(data => {
-                        if (data.insertedId) {
-                            Swal.fire(
-                                'Yah Succeed Your Register',
-                                'You have access new item!',
-                                'Thank You'
-                            )
-                            console.log(user);
-                            navigate('/');
-                        }
-                    })
-
-
-
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data)
+                    if(data.insertedId){
+                        alert('added')
+                    }
+                })
+                .catch(error => console.log(error))
             })
             .catch(error => {
-
                 console.log(error)
                 Swal.fire({
                     icon: 'Faild',
@@ -53,10 +47,10 @@ const Register = () => {
 
                     footer: '<a href="">Please Write The again</a>'
                 })
-                updateProfiled(data.email, data.photo)
-                    .then(() => {
-                        console.log('profiled updated');
-                    })
+                // updateProfiled(data.email, data.photo)
+                //     .then(() => {
+                //         console.log('profiled updated');
+                //     })
             })
 
 
@@ -119,16 +113,17 @@ const Register = () => {
                                     <div className="form-control mt-6">
                                         <button className="btn btn-primary">Register</button>
                                     </div>
-
+                                     
+                                    
                                     <p className='mt-5 mb-5'>I have already account ! <Link to='/login'> <button className='btn btn-outline btn-sm'>Login</button></Link> </p>
                                 </form>
-                              
+                              <GoogleSignIn></GoogleSignIn>
                             </div>
                         </div>
                         <div className=" lg:text-left">
                             <img src={registerBgImg1} alt="" />
                         </div>
-
+                         
                     </div>
 
 

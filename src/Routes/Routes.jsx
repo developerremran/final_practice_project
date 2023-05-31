@@ -10,6 +10,7 @@ import Register from "../Pages/Register";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import UserDashBoard from "../Pages/DashBoard/UserDashBard/UserDashBoard";
 import MyCart from "../Pages/DashBoard/MyCart/MyCart";
+import AdminAllUser from "../Pages/DashBoard/AdminAllUser/AdminAllUser";
 
 
 const router = createBrowserRouter([
@@ -55,6 +56,10 @@ const router = createBrowserRouter([
             {
                 path:'myCart',
                 element:<MyCart></MyCart>
+            },
+            {
+                path:'allUser',
+                element:<AdminAllUser></AdminAllUser>
             }
         ]
     }
